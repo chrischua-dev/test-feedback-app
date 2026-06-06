@@ -1,0 +1,27 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        # Use `npm install` instead of `npm ci`: a transitive optional
+        # wasm32 dependency (@rolldown/binding-wasm32-wasi -> @emnapi/core,
+        # @emnapi/runtime) is pruned from the lock file on non-wasm platforms,
+        # which makes the strict `npm ci` integrity check fail. `npm install`
+        # reconciles the lock file at build time and is tolerant of this.
+        - npm install --cache .npm --prefer-offline
+        - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install --cache .npm --prefer-offline
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .npm/**/*
