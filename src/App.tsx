@@ -7,27 +7,9 @@ import FeedbackForm from './components/FeedbackForm';
 import FeedbackList from './components/FeedbackList';
 import './App.css';
 
-// Amplify integration flag — starts false; set to true after
-// amplify_outputs.json is successfully loaded at runtime.
-let amplifyConfigured = false;
-
-// Attempt to load amplify_outputs.json at module load time.
-// If the file is absent (local-only / pre-workshop mode) the import
-// rejects and amplifyConfigured stays false — the app degrades silently.
-(async () => {
-  try {
-    const outputs = await import('../amplify_outputs.json');
-    Amplify.configure(outputs.default);
-    amplifyConfigured = true;
-  } catch {
-    // amplify_outputs.json not present → local-only mode
-  }
-})();
-
 // Create a typed Amplify Data client.
-// It is only used inside `amplifyConfigured` branches, so calling it
-// before Amplify.configure() succeeds won't cause runtime errors in
-// local-only mode — the client is never exercised.
+// Safe to create before Amplify.configure() — only exercised when
+// amplifyConfigured state is true.
 const client = generateClient<Schema>();
 
 /**
@@ -56,11 +38,28 @@ function App() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  // Track whether Amplify has been configured as React state so that
+  // the fetch useEffect re-runs once configuration resolves.
+  const [amplifyConfigured, setAmplifyConfigured] = useState(false);
 
+  // Configure Amplify on mount by dynamically importing amplify_outputs.json.
+  // Falls back to local-only mode silently if the file is absent.
+  useEffect(() => {
+    (async () => {
+      try {
+        const outputs = await import('../amplify_outputs.json');
+        Amplify.configure(outputs.default);
+        setAmplifyConfigured(true);
+      } catch {
+        // amplify_outputs.json not present → local-only mode
+      }
+    })();
+  }, []);
+
+  // Fetch existing entries from Amplify once it's configured.
   useEffect(() => {
     if (!amplifyConfigured) return;
 
-    // Amplify-connected mode: fetch existing entries on mount.
     setIsLoading(true);
     (async () => {
       try {
@@ -78,7 +77,7 @@ function App() {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [amplifyConfigured]);
 
   async function handleSubmit(formData: Omit<FeedbackEntry, 'id'>): Promise<void> {
     if (amplifyConfigured) {

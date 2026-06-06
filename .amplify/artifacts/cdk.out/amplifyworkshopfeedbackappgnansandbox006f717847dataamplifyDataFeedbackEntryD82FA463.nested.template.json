@@ -1,0 +1,1847 @@
+{
+ "Parameters": {
+  "DynamoDBModelTableReadIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of read IOPS the table should support."
+  },
+  "DynamoDBModelTableWriteIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of write IOPS the table should support."
+  },
+  "DynamoDBBillingMode": {
+   "Type": "String",
+   "Default": "PAY_PER_REQUEST",
+   "AllowedValues": [
+    "PAY_PER_REQUEST",
+    "PROVISIONED"
+   ],
+   "Description": "Configure @model types to create DynamoDB tables with PAY_PER_REQUEST or PROVISIONED billing modes."
+  },
+  "DynamoDBEnablePointInTimeRecovery": {
+   "Type": "String",
+   "Default": "false",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Whether to enable Point in Time Recovery on the table."
+  },
+  "DynamoDBEnableServerSideEncryption": {
+   "Type": "String",
+   "Default": "true",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Enable server side encryption powered by KMS."
+  },
+  "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource57C22C51Outputsamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataAmplifyTableManagerTab0A0D3158": {
+   "Type": "String"
+  },
+  "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId": {
+   "Type": "String"
+  },
+  "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name": {
+   "Type": "String"
+  }
+ },
+ "Conditions": {
+  "HasEnvironmentParameter": {
+   "Fn::Not": [
+    {
+     "Fn::Equals": [
+      "NONE",
+      "NONE"
+     ]
+    }
+   ]
+  },
+  "ShouldUsePayPerRequestBilling": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBBillingMode"
+    },
+    "PAY_PER_REQUEST"
+   ]
+  },
+  "ShouldUsePointInTimeRecovery": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBEnablePointInTimeRecovery"
+    },
+    "true"
+   ]
+  },
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Resources": {
+  "FeedbackEntryTable": {
+   "Type": "Custom::AmplifyDynamoDBTable",
+   "Properties": {
+    "ServiceToken": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource57C22C51Outputsamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataAmplifyTableManagerTab0A0D3158"
+    },
+    "tableName": {
+     "Fn::Join": [
+      "",
+      [
+       "FeedbackEntry-",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "attributeDefinitions": [
+     {
+      "attributeName": "id",
+      "attributeType": "S"
+     }
+    ],
+    "keySchema": [
+     {
+      "attributeName": "id",
+      "keyType": "HASH"
+     }
+    ],
+    "provisionedThroughput": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      {
+       "Ref": "AWS::NoValue"
+      },
+      {
+       "ReadCapacityUnits": {
+        "Ref": "DynamoDBModelTableReadIOPS"
+       },
+       "WriteCapacityUnits": {
+        "Ref": "DynamoDBModelTableWriteIOPS"
+       }
+      }
+     ]
+    },
+    "sseSpecification": {
+     "sseEnabled": false
+    },
+    "streamSpecification": {
+     "streamViewType": "NEW_AND_OLD_IMAGES"
+    },
+    "deletionProtectionEnabled": false,
+    "allowDestructiveGraphqlSchemaUpdates": true,
+    "replaceTableUponGsiUpdate": true,
+    "pointInTimeRecoverySpecification": {
+     "Fn::If": [
+      "ShouldUsePointInTimeRecovery",
+      {
+       "PointInTimeRecoveryEnabled": true
+      },
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    },
+    "billingMode": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      "PAY_PER_REQUEST",
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/FeedbackEntryTable/Default/Default"
+   }
+  },
+  "FeedbackEntryIAMRoleCB406B1D": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "appsync.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": [
+          "dynamodb:BatchGetItem",
+          "dynamodb:BatchWriteItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem",
+          "dynamodb:GetItem",
+          "dynamodb:Scan",
+          "dynamodb:Query",
+          "dynamodb:UpdateItem",
+          "dynamodb:ConditionCheckItem",
+          "dynamodb:DescribeTable",
+          "dynamodb:GetRecords",
+          "dynamodb:GetShardIterator"
+         ],
+         "Effect": "Allow",
+         "Resource": [
+          {
+           "Fn::Sub": [
+            "arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "FeedbackEntry-",
+                {
+                 "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "Fn::Sub": [
+            "arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "FeedbackEntry-",
+                {
+                 "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "DynamoDBAccess"
+     }
+    ],
+    "RoleName": {
+     "Fn::Join": [
+      "",
+      [
+       "FeedbackEntryIAMRole438254-",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/FeedbackEntryIAMRole/Resource"
+   }
+  },
+  "FeedbackEntryDataSource": {
+   "Type": "AWS::AppSync::DataSource",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DynamoDBConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "TableName": {
+      "Fn::Select": [
+       1,
+       {
+        "Fn::Split": [
+         "/",
+         {
+          "Fn::Select": [
+           5,
+           {
+            "Fn::Split": [
+             ":",
+             {
+              "Fn::GetAtt": [
+               "FeedbackEntryTable",
+               "TableArn"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "Name": "FeedbackEntryTable",
+    "ServiceRoleArn": {
+     "Fn::GetAtt": [
+      "FeedbackEntryIAMRoleCB406B1D",
+      "Arn"
+     ]
+    },
+    "Type": "AMAZON_DYNAMODB"
+   },
+   "DependsOn": [
+    "FeedbackEntryIAMRoleCB406B1D"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/FeedbackEntryDataSource/Resource"
+   }
+  },
+  "QuerygetFeedbackEntryauth0FunctionQuerygetFeedbackEntryauth0FunctionAppSyncFunctionE04D8201": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetFeedbackEntryauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/74c1522efb7733193e4d75cee5b96595110452c456623a36d786f743aea94e7c.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/QuerygetFeedbackEntryauth0Function/QuerygetFeedbackEntryauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerygetFeedbackEntrypostAuth0FunctionQuerygetFeedbackEntrypostAuth0FunctionAppSyncFunctionA8DF49EF": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetFeedbackEntrypostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/QuerygetFeedbackEntrypostAuth0Function/QuerygetFeedbackEntrypostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryGetFeedbackEntryDataResolverFnQueryGetFeedbackEntryDataResolverFnAppSyncFunctionDDA890C2": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FeedbackEntryDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryGetFeedbackEntryDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08f4d557693d96c1a4efba0f9dc91330e4b19772fd5477c156468843e3d9cb5e.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4c6a2d29f01c6091bd1d9afe16e5849d456c96f17c3b215938c8067399532719.vtl"
+    }
+   },
+   "DependsOn": [
+    "FeedbackEntryDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/QueryGetFeedbackEntryDataResolverFn/QueryGetFeedbackEntryDataResolverFn.AppSyncFunction"
+   }
+  },
+  "GetFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "getFeedbackEntry",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerygetFeedbackEntryauth0FunctionQuerygetFeedbackEntryauth0FunctionAppSyncFunctionE04D8201",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerygetFeedbackEntrypostAuth0FunctionQuerygetFeedbackEntrypostAuth0FunctionAppSyncFunctionA8DF49EF",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryGetFeedbackEntryDataResolverFnQueryGetFeedbackEntryDataResolverFnAppSyncFunctionDDA890C2",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"getFeedbackEntry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "FeedbackEntryTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/queryGetFeedbackEntryResolver"
+   }
+  },
+  "QuerylistFeedbackEntriesauth0FunctionQuerylistFeedbackEntriesauth0FunctionAppSyncFunction4087FD1F": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistFeedbackEntriesauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/74c1522efb7733193e4d75cee5b96595110452c456623a36d786f743aea94e7c.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/QuerylistFeedbackEntriesauth0Function/QuerylistFeedbackEntriesauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerylistFeedbackEntriespostAuth0FunctionQuerylistFeedbackEntriespostAuth0FunctionAppSyncFunction4C069D3B": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistFeedbackEntriespostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/QuerylistFeedbackEntriespostAuth0Function/QuerylistFeedbackEntriespostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryListFeedbackEntriesDataResolverFnQueryListFeedbackEntriesDataResolverFnAppSyncFunction2523E165": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FeedbackEntryDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryListFeedbackEntriesDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9fcbe070ecd3023c5bf5b966fa9584757db9762eef123bad0820bd87591b2174.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cc01911d0269d4080ea57505dc445dfc315ef7ad85d3d9d4ea1357858bff451d.vtl"
+    }
+   },
+   "DependsOn": [
+    "FeedbackEntryDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/QueryListFeedbackEntriesDataResolverFn/QueryListFeedbackEntriesDataResolverFn.AppSyncFunction"
+   }
+  },
+  "ListFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "listFeedbackEntries",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerylistFeedbackEntriesauth0FunctionQuerylistFeedbackEntriesauth0FunctionAppSyncFunction4087FD1F",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerylistFeedbackEntriespostAuth0FunctionQuerylistFeedbackEntriespostAuth0FunctionAppSyncFunction4C069D3B",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryListFeedbackEntriesDataResolverFnQueryListFeedbackEntriesDataResolverFnAppSyncFunction2523E165",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listFeedbackEntries\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "FeedbackEntryTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/queryListFeedbackEntriesResolver"
+   }
+  },
+  "MutationcreateFeedbackEntryinit0FunctionMutationcreateFeedbackEntryinit0FunctionAppSyncFunctionDD664174": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateFeedbackEntryinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a183ddccbd956316c38ef97177b8f088ef0826f62023323f5ae6053d348ccffc.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationcreateFeedbackEntryinit0Function/MutationcreateFeedbackEntryinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateFeedbackEntryauth0FunctionMutationcreateFeedbackEntryauth0FunctionAppSyncFunctionB7ECE18D": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateFeedbackEntryauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/eda4511e01e0956a1b97d4ca904a6671ee21a1a583dff170fb18cbbd4f9dd6e6.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationcreateFeedbackEntryauth0Function/MutationcreateFeedbackEntryauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateFeedbackEntrypostAuth0FunctionMutationcreateFeedbackEntrypostAuth0FunctionAppSyncFunction3AC2E1F0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateFeedbackEntrypostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationcreateFeedbackEntrypostAuth0Function/MutationcreateFeedbackEntrypostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationCreateFeedbackEntryDataResolverFnMutationCreateFeedbackEntryDataResolverFnAppSyncFunctionE97EFB40": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FeedbackEntryDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationCreateFeedbackEntryDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/8c9a079cf8443a9d3f1ab3581d584c7c37be000cc07538a9cefd168848e162bf.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "FeedbackEntryDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationCreateFeedbackEntryDataResolverFn/MutationCreateFeedbackEntryDataResolverFn.AppSyncFunction"
+   }
+  },
+  "CreateFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "createFeedbackEntry",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationcreateFeedbackEntryinit0FunctionMutationcreateFeedbackEntryinit0FunctionAppSyncFunctionDD664174",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateFeedbackEntryauth0FunctionMutationcreateFeedbackEntryauth0FunctionAppSyncFunctionB7ECE18D",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateFeedbackEntrypostAuth0FunctionMutationcreateFeedbackEntrypostAuth0FunctionAppSyncFunction3AC2E1F0",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationCreateFeedbackEntryDataResolverFnMutationCreateFeedbackEntryDataResolverFnAppSyncFunctionE97EFB40",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createFeedbackEntry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "FeedbackEntryTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/mutationCreateFeedbackEntryResolver"
+   }
+  },
+  "MutationupdateFeedbackEntryinit0FunctionMutationupdateFeedbackEntryinit0FunctionAppSyncFunctionC36559B5": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateFeedbackEntryinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/06db846fd14e6fc371f22b12b5545ba8e2dbfeda85d8c8d586c71c282166657b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationupdateFeedbackEntryinit0Function/MutationupdateFeedbackEntryinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateFeedbackEntryauth0FunctionMutationupdateFeedbackEntryauth0FunctionAppSyncFunction3D37C3B7": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FeedbackEntryDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateFeedbackEntryauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cd0b7103bd7f11aa4b0201590c636ce2c0edbf9e5dd157cb5e0819bc7d7f4738.vtl"
+    }
+   },
+   "DependsOn": [
+    "FeedbackEntryDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationupdateFeedbackEntryauth0Function/MutationupdateFeedbackEntryauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateFeedbackEntrypostAuth0FunctionMutationupdateFeedbackEntrypostAuth0FunctionAppSyncFunction40551021": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateFeedbackEntrypostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationupdateFeedbackEntrypostAuth0Function/MutationupdateFeedbackEntrypostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationUpdateFeedbackEntryDataResolverFnMutationUpdateFeedbackEntryDataResolverFnAppSyncFunction95EE96E1": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FeedbackEntryDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationUpdateFeedbackEntryDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/474bf0776ec2164a13191d1a0a9e057154931e4918fea5086f49850d02a5371b.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "FeedbackEntryDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationUpdateFeedbackEntryDataResolverFn/MutationUpdateFeedbackEntryDataResolverFn.AppSyncFunction"
+   }
+  },
+  "UpdateFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "updateFeedbackEntry",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationupdateFeedbackEntryinit0FunctionMutationupdateFeedbackEntryinit0FunctionAppSyncFunctionC36559B5",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateFeedbackEntryauth0FunctionMutationupdateFeedbackEntryauth0FunctionAppSyncFunction3D37C3B7",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateFeedbackEntrypostAuth0FunctionMutationupdateFeedbackEntrypostAuth0FunctionAppSyncFunction40551021",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationUpdateFeedbackEntryDataResolverFnMutationUpdateFeedbackEntryDataResolverFnAppSyncFunction95EE96E1",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"updateFeedbackEntry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "FeedbackEntryTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/mutationUpdateFeedbackEntryResolver"
+   }
+  },
+  "MutationdeleteFeedbackEntryauth0FunctionMutationdeleteFeedbackEntryauth0FunctionAppSyncFunctionB3B10A6E": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FeedbackEntryDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteFeedbackEntryauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0064bfbd7fdaea51ef97e8494f036beca0be53bc5c1c7b05c29a27f9cdb28bd2.vtl"
+    }
+   },
+   "DependsOn": [
+    "FeedbackEntryDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationdeleteFeedbackEntryauth0Function/MutationdeleteFeedbackEntryauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationdeleteFeedbackEntrypostAuth0FunctionMutationdeleteFeedbackEntrypostAuth0FunctionAppSyncFunction65B6E006": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteFeedbackEntrypostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationdeleteFeedbackEntrypostAuth0Function/MutationdeleteFeedbackEntrypostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationDeleteFeedbackEntryDataResolverFnMutationDeleteFeedbackEntryDataResolverFnAppSyncFunction84A3BBA7": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "FeedbackEntryDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationDeleteFeedbackEntryDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4f7907d1209a2c9953a0c053df402c634e359546d70c7cc5c2e8e21ea734880f.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "FeedbackEntryDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/MutationDeleteFeedbackEntryDataResolverFn/MutationDeleteFeedbackEntryDataResolverFn.AppSyncFunction"
+   }
+  },
+  "DeleteFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "deleteFeedbackEntry",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteFeedbackEntryauth0FunctionMutationdeleteFeedbackEntryauth0FunctionAppSyncFunctionB3B10A6E",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteFeedbackEntrypostAuth0FunctionMutationdeleteFeedbackEntrypostAuth0FunctionAppSyncFunction65B6E006",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationDeleteFeedbackEntryDataResolverFnMutationDeleteFeedbackEntryDataResolverFnAppSyncFunction84A3BBA7",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteFeedbackEntry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "FeedbackEntryTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/mutationDeleteFeedbackEntryResolver"
+   }
+  },
+  "SubscriptiononCreateFeedbackEntryauth0FunctionSubscriptiononCreateFeedbackEntryauth0FunctionAppSyncFunction2837C2A0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateFeedbackEntryauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0064bfbd7fdaea51ef97e8494f036beca0be53bc5c1c7b05c29a27f9cdb28bd2.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptiononCreateFeedbackEntryauth0Function/SubscriptiononCreateFeedbackEntryauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateFeedbackEntrypostAuth0FunctionSubscriptiononCreateFeedbackEntrypostAuth0FunctionAppSyncFunctionF2B2F58C": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateFeedbackEntrypostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptiononCreateFeedbackEntrypostAuth0Function/SubscriptiononCreateFeedbackEntrypostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnCreateFeedbackEntryDataResolverFnSubscriptionOnCreateFeedbackEntryDataResolverFnAppSyncFunction6D8CC61E": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnCreateFeedbackEntryDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptionOnCreateFeedbackEntryDataResolverFn/SubscriptionOnCreateFeedbackEntryDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "onCreateFeedbackEntry",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateFeedbackEntryauth0FunctionSubscriptiononCreateFeedbackEntryauth0FunctionAppSyncFunction2837C2A0",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateFeedbackEntrypostAuth0FunctionSubscriptiononCreateFeedbackEntrypostAuth0FunctionAppSyncFunctionF2B2F58C",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnCreateFeedbackEntryDataResolverFnSubscriptionOnCreateFeedbackEntryDataResolverFnAppSyncFunction6D8CC61E",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onCreateFeedbackEntry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/subscriptionOnCreateFeedbackEntryResolver"
+   }
+  },
+  "SubscriptiononUpdateFeedbackEntryauth0FunctionSubscriptiononUpdateFeedbackEntryauth0FunctionAppSyncFunctionED2F9C80": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateFeedbackEntryauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0064bfbd7fdaea51ef97e8494f036beca0be53bc5c1c7b05c29a27f9cdb28bd2.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptiononUpdateFeedbackEntryauth0Function/SubscriptiononUpdateFeedbackEntryauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateFeedbackEntrypostAuth0FunctionSubscriptiononUpdateFeedbackEntrypostAuth0FunctionAppSyncFunctionADC6AE47": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateFeedbackEntrypostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptiononUpdateFeedbackEntrypostAuth0Function/SubscriptiononUpdateFeedbackEntrypostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnUpdateFeedbackEntryDataResolverFnSubscriptionOnUpdateFeedbackEntryDataResolverFnAppSyncFunctionFF7A8AC0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnUpdateFeedbackEntryDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptionOnUpdateFeedbackEntryDataResolverFn/SubscriptionOnUpdateFeedbackEntryDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "onUpdateFeedbackEntry",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateFeedbackEntryauth0FunctionSubscriptiononUpdateFeedbackEntryauth0FunctionAppSyncFunctionED2F9C80",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateFeedbackEntrypostAuth0FunctionSubscriptiononUpdateFeedbackEntrypostAuth0FunctionAppSyncFunctionADC6AE47",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnUpdateFeedbackEntryDataResolverFnSubscriptionOnUpdateFeedbackEntryDataResolverFnAppSyncFunctionFF7A8AC0",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onUpdateFeedbackEntry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/subscriptionOnUpdateFeedbackEntryResolver"
+   }
+  },
+  "SubscriptiononDeleteFeedbackEntryauth0FunctionSubscriptiononDeleteFeedbackEntryauth0FunctionAppSyncFunction86488233": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteFeedbackEntryauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0064bfbd7fdaea51ef97e8494f036beca0be53bc5c1c7b05c29a27f9cdb28bd2.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptiononDeleteFeedbackEntryauth0Function/SubscriptiononDeleteFeedbackEntryauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteFeedbackEntrypostAuth0FunctionSubscriptiononDeleteFeedbackEntrypostAuth0FunctionAppSyncFunction719AA919": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteFeedbackEntrypostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptiononDeleteFeedbackEntrypostAuth0Function/SubscriptiononDeleteFeedbackEntrypostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnDeleteFeedbackEntryDataResolverFnSubscriptionOnDeleteFeedbackEntryDataResolverFnAppSyncFunction2FEE775B": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPINONEDS9FEE31C8Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnDeleteFeedbackEntryDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/SubscriptionOnDeleteFeedbackEntryDataResolverFn/SubscriptionOnDeleteFeedbackEntryDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteFeedbackEntryResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+    },
+    "FieldName": "onDeleteFeedbackEntry",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteFeedbackEntryauth0FunctionSubscriptiononDeleteFeedbackEntryauth0FunctionAppSyncFunction86488233",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteFeedbackEntrypostAuth0FunctionSubscriptiononDeleteFeedbackEntrypostAuth0FunctionAppSyncFunction719AA919",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnDeleteFeedbackEntryDataResolverFnSubscriptionOnDeleteFeedbackEntryDataResolverFnAppSyncFunction2FEE775B",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onDeleteFeedbackEntry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/subscriptionOnDeleteFeedbackEntryResolver"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwWrDMAyGn6V3Vwspg13XhB27kexeFFsJbhI5WHJLCXn3kXR07PTrQx/Sn0P++gbZDm+yt67fD76B+USi5GpF25ui5S+MOJJSXKEI7Lz6wKYiCSlaMkUSDeMftvyc8Sbn2d0Zx+Aa+MZmoCMKGY8jzFUYHnYYaDE4TXJnC3O56WVTomL9PPmfPhLbtUQRuPVdirg1+v08XCkuRg5nFCEVeF/DyAGOyfaka4FldT+TTknNtq4VO8/dYjg4gou8XPMc8gyy3UW838fE6keC6pE/rFVtDzYBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-workshopfeedbackapp-gnan-sandbox-006f717847/data/amplifyData/FeedbackEntry/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "GetAttFeedbackEntryTableStreamArn": {
+   "Description": "Your DynamoDB table StreamArn.",
+   "Value": {
+    "Fn::GetAtt": [
+     "FeedbackEntryTable",
+     "TableStreamArn"
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "GetAtt:FeedbackEntryTable:StreamArn"
+      ]
+     ]
+    }
+   }
+  },
+  "GetAttFeedbackEntryTableName": {
+   "Description": "Your DynamoDB table name.",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "FeedbackEntry-",
+      {
+       "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+      },
+      "-NONE"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyworkshopfeedbackappgnansandbox006f717847dataamplifyDataGraphQLAPI6042CCDFApiId"
+       },
+       "GetAtt:FeedbackEntryTable:Name"
+      ]
+     ]
+    }
+   }
+  }
+ }
+}

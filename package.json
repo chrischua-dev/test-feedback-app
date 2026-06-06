@@ -11,6 +11,7 @@
     "test": "vitest --run"
   },
   "dependencies": {
+    "@aws-amplify/backend": "^1.23.0",
     "@aws-amplify/backend-cli": "^1.8.3",
     "aws-amplify": "^6.17.0",
     "react": "^19.2.6",
