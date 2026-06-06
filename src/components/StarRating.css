@@ -1,0 +1,40 @@
+.star-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.star-rating__group {
+  display: flex;
+  gap: 4px;
+}
+
+.star-rating__star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 2px 4px;
+  color: var(--border, #e5e4e7);
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.star-rating__star:hover,
+.star-rating__star:focus-visible {
+  color: var(--accent, #aa3bff);
+  transform: scale(1.15);
+  outline: 2px solid var(--accent, #aa3bff);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.star-rating__star--filled {
+  color: var(--accent, #aa3bff);
+}
+
+.star-rating__error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin-top: 2px;
+}

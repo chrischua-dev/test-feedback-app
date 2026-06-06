@@ -1,0 +1,102 @@
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.feedback-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.feedback-form__label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--foreground, #1a1a2e);
+}
+
+.feedback-form__input,
+.feedback-form__textarea {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1.5px solid var(--border, #e5e4e7);
+  border-radius: 6px;
+  background: var(--surface, #ffffff);
+  color: var(--foreground, #1a1a2e);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.feedback-form__input:focus,
+.feedback-form__textarea:focus {
+  outline: none;
+  border-color: var(--accent, #aa3bff);
+  box-shadow: 0 0 0 3px rgba(170, 59, 255, 0.15);
+}
+
+.feedback-form__input--error,
+.feedback-form__textarea--error {
+  border-color: #dc2626;
+}
+
+.feedback-form__textarea {
+  resize: vertical;
+  min-height: 72px; /* ~3 rows */
+}
+
+.feedback-form__char-count {
+  font-size: 0.8125rem;
+  color: var(--muted, #888);
+  text-align: right;
+}
+
+.feedback-form__error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin-top: 2px;
+}
+
+.feedback-form__submit-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.feedback-form__submit-error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin: 0;
+}
+
+.feedback-form__submit {
+  padding: 0.625rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: var(--accent, #aa3bff);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.feedback-form__submit:hover:not(:disabled) {
+  background: var(--accent-hover, #9328e8);
+}
+
+.feedback-form__submit:focus-visible {
+  outline: 2px solid var(--accent, #aa3bff);
+  outline-offset: 3px;
+}
+
+.feedback-form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

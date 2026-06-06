@@ -1,0 +1,40 @@
+.feedback-card {
+  background: var(--social-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.feedback-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+.feedback-card__name {
+  font-weight: 500;
+  color: var(--text-h);
+  font-size: 16px;
+}
+
+.feedback-card__rating {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: 4px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.feedback-card__comment {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  word-break: break-word;
+}
